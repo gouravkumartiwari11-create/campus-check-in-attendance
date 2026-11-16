@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ff">
+  <meta name="description" content="A fictional, browser-only classroom attendance demo.">
+  <title>Campus Check-In — Attendance Demo</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./sample-data.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Campus Check-In home">
+      <span class="brand-mark" aria-hidden="true">CC</span>
+      <span class="brand-name">Campus<span>Check-In</span></span>
+    </a>
+    <div class="header-meta">
+      <span class="demo-pill"><span class="demo-dot" aria-hidden="true"></span>LOCAL DEMO</span>
+      <span class="header-caption">A classroom workflow, just for practice</span>
+    </div>
+  </header>
+
+  <main id="main-content" class="page-shell">
+    <section class="welcome-panel" aria-labelledby="welcome-title">
+      <div class="welcome-copy">
+        <p class="eyebrow"><span aria-hidden="true">✦</span> YOUR CLASSROOM, AT A GLANCE</p>
+        <h1 id="welcome-title">A brighter way to<br class="desktop-break"> take attendance.</h1>
+        <p class="welcome-description">Try a check-in and see your class report update instantly. This is a sample experience using fictional student details.</p>
+      </div>
+      <div class="welcome-art" aria-hidden="true">
+        <span class="sun-shape"></span>
+        <span class="art-card art-card-back"></span>
+        <span class="art-card art-card-front">
+          <span class="art-line art-line-short"></span>
+          <span class="art-line"></span>
+          <span class="art-line art-line-medium"></span>
+          <span class="art-check">✓</span>
+        </span>
+        <span class="sparkle sparkle-one">✦</span>
+        <span class="sparkle sparkle-two">✦</span>
+      </div>
+    </section>
+
+    <div id="storage-notice" class="storage-notice" role="status" aria-live="polite" hidden></div>
+
+    <div class="dashboard-grid">
+      <section class="panel checkin-panel" aria-labelledby="checkin-title">
+        <div class="section-heading">
+          <span class="section-icon checkin-icon" aria-hidden="true">01</span>
+          <div>
+            <p class="eyebrow">QUICK &amp; EASY</p>
+            <h2 id="checkin-title">Student check-in</h2>
+          </div>
+        </div>
+
+        <p class="panel-intro">Choose a name from our fictional class list to record a demo check-in.</p>
+
+        <form id="checkin-form" novalidate>
+          <label for="student-select">Student name</label>
+          <div class="select-wrap">
+            <select id="student-select" name="studentId" aria-describedby="select-hint checkin-feedback">
+              <option value="">Choose a student…</option>
+            </select>
+            <span class="select-chevron" aria-hidden="true">⌄</span>
+          </div>
+          <p id="select-hint" class="field-hint">Only the sample students shown here can check in.</p>
+          <button class="button button-primary" type="submit">
+            <span aria-hidden="true">✓</span> Check in student
+          </button>
+          <p id="checkin-feedback" class="feedback" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="privacy-note">
+          <span class="privacy-icon" aria-hidden="true">i</span>
+          <p><strong>Demo only.</strong> Names are fictional. This page does not verify identity or prove who is physically present.</p>
+        </div>
+      </section>
+
+      <section class="panel report-panel" aria-labelledby="report-title">
+        <div class="report-heading">
+          <div class="section-heading">
+            <span class="section-icon report-icon" aria-hidden="true">02</span>
+            <div>
+              <p class="eyebrow">TODAY'S SNAPSHOT</p>
+              <h2 id="report-title">Class report</h2>
+            </div>
+          </div>
+          <p class="report-date"><span aria-hidden="true">▦</span> <time id="report-date"></time></p>
+        </div>
+
+        <div class="summary-grid" aria-label="Attendance totals">
+          <article class="summary-card present-card">
+            <span class="summary-label">Present</span>
+            <strong id="present-count" class="summary-count">0</strong>
+            <span class="summary-foot">checked in</span>
+            <span class="summary-decoration" aria-hidden="true">✓</span>
+          </article>
+          <article class="summary-card absent-card">
+            <span class="summary-label">Not checked in</span>
+            <strong id="absent-count" class="summary-count">0</strong>
+            <span class="summary-foot">still to arrive</span>
+            <span class="summary-decoration" aria-hidden="true">…</span>
+          </article>
+        </div>
+
+        <div class="roster-heading">
+          <h3>Class roster <span id="roster-size" class="roster-size"></span></h3>
+          <span class="list-key"><span class="key-dot" aria-hidden="true"></span> Demo status</span>
+        </div>
+        <ul id="attendance-list" class="attendance-list" aria-label="Daily attendance by student"></ul>
+
+        <div class="report-footer">
+          <p>One check-in per student, per demo day.</p>
+          <button id="reset-button" class="button button-quiet" type="button">↺ <span>Restore sample data</span></button>
+        </div>
+      </section>
+    </div>
+
+    <footer class="page-footer">
+      <span>Made for learning, not record-keeping.</span>
+      <span>Changes stay in this browser only.</span>
+    </footer>
+  </main>
+</body>
+</html>
